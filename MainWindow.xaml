@@ -1,12 +1,31 @@
-﻿<Window x:Class="BayoudGUI.MainWindow"
+﻿<Window x:Name="win" x:Class="BayoudGUI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BayoudGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="BayoudGUI" Height="300" Width="250" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="BayoudGUI.ico">
     <Grid>
-        
+        <ProgressBar x:Name="progress" HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" VerticalAlignment="Top" Width="224" Visibility="Hidden"/>
+        <TextBox x:Name="textBoxURL" HorizontalAlignment="Left" Height="19" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
+
+        <StackPanel Orientation="Horizontal" Margin="10,59,10,192" Height="20">
+            <Button x:Name="buttonUpdate"   Content="Update"   Width="110" Margin="0,0,4,0" Height="20" Click="ButtonUpdate_Click"/>
+            <Button x:Name="buttonDownload" Content="Download" Width="110"                  Height="20" VerticalAlignment="Top" Click="ButtonDownload_Click"/>
+        </StackPanel>
+        <Separator Height="10" Margin="0,84,0,0" VerticalAlignment="Top" Width="244"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,99,0,0" TextWrapping="Wrap" Text="FFMPEG Settings" VerticalAlignment="Top" Width="224" FontSize="16" FontWeight="Bold"/>
+        <CheckBox x:Name="chkFF" Content="Transcode after download" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Checked="ChkFF_Checked" Unchecked="ChkFF_Unchecked"/>
+        <Grid x:Name="Gffstuff" Visibility="Visible">
+            <TextBlock HorizontalAlignment="Left" Margin="10,145,0,0" TextWrapping="Wrap" Text="Command Line Options" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtFFCmd" HorizontalAlignment="Left" Height="20" Margin="10,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,191,0,0" TextWrapping="Wrap" Text="File Extension" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtFFFileExt" HorizontalAlignment="Left" Height="20" Margin="10,212,0,0" TextWrapping="Wrap" Text="mp3" VerticalAlignment="Top" Width="224"/>
+            <Button HorizontalAlignment="Left" Margin="209,237,0,0" VerticalAlignment="Top" Width="24" Height="24" Click="Button_Click">
+                <Image Source="pack://siteoforigin:,,,/Save_FloppyDisk.png" Width="16" Height="16"/>
+            </Button>
+        </Grid>
+        <Label x:Name="lblStatus" Content="(status placeholder)" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="224" Visibility="Hidden"/>
     </Grid>
 </Window>
