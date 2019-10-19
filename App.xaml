@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:BayoudGUI"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <BitmapImage UriSource="/BayoudGUI;component/Save_FloppyDisk.png" x:Key="Save_FloppyDisk"/>
     </Application.Resources>
 </Application>

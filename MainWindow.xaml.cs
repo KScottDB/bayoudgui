@@ -31,14 +31,14 @@ namespace BayoudGUI {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             if (!File.Exists("youtube-dl.exe")) {
-                MessageBox.Show(
+                bool nodo = MessageBox.Show(
                         $"youtube-dl.exe is not present, and {progname} will attempt to download it.\n" +
                          "It's best you try to update after this.\n" +
                         $"{progname} will appear after a few seconds.",
                         progname,
-                        MessageBoxButton.OK,
+                        MessageBoxButton.OKCancel,
                         MessageBoxImage.Exclamation
-                    );
+                    ) == MessageBoxResult.Cancel;
                 webClient.DownloadFile(
                     "https://github.com/ytdl-org/youtube-dl/releases/download/2019.10.16/youtube-dl.exe",
                     "youtube-dl.exe");
@@ -120,6 +120,8 @@ namespace BayoudGUI {
         }
 
         private void ButtonDownload_Click(object sender, RoutedEventArgs e) {
+            /*
+            Console.WriteLine("Download button click");
             string ffs = "";
             if ((bool)chkFF.IsChecked) ffs = $"--exec \"ffmpeg -i '{{}}' {txtFFCmd.Text} '{{}}.{txtFFFileExt.Text}'\" ";
             ProcessStartInfo startInfo = new ProcessStartInfo {
@@ -130,17 +132,47 @@ namespace BayoudGUI {
                 UseShellExecute = false,
                 WorkingDirectory = "."
             };
-            Process ytdl_process = Process.Start(startInfo);
+            Process ytdl_process = new Process {
+                StartInfo = startInfo
+            };
+            Console.WriteLine("Process created");
+            ytdl_process.EnableRaisingEvents = true;
             ytdl_process.OutputDataReceived += processdata;
+            ytdl_process.Exited += processexit;
+            Console.WriteLine("Events bound");
+            ytdl_process.Start();
+            Console.WriteLine("Process started");
+            */
+
+            string eargs = "";
+
+            if ((bool)boxDLAud.IsChecked) eargs += "-x ";
+            if ((bool)chkFF.IsChecked) eargs += $"--exec \"ffmpeg -i {{}} {txtFFCmd.Text} {{}}.{txtFFFileExt.Text} & del {{}}\"";
+
+            ProcessStartInfo startInfo = new ProcessStartInfo {
+                FileName = "youtube-dl.exe",
+                Arguments = $"{eargs} \"{textBoxURL.Text}\""
+            };
+            Process.Start(startInfo);
+        }
+
+        private void processexit(object sender, EventArgs e) {
+            lblStatus.Visibility = Visibility.Hidden;
+            Console.WriteLine("Process Exit");
         }
 
         private void processdata(object sender, DataReceivedEventArgs e) {
+            Console.WriteLine($"PDATA: {e.Data}");
             lblStatus.Content = e.Data;
             lblStatus.Visibility = Visibility.Visible;
         }
 
         private void ButtonUpdate_Click(object sender, RoutedEventArgs e) {
-
+            ProcessStartInfo startInfo = new ProcessStartInfo {
+                FileName = "youtube-dl.exe",
+                Arguments = "-U"
+            };
+            Process.Start(startInfo);
         }
     }
 }
