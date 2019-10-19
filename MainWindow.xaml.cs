@@ -31,14 +31,14 @@ namespace BayoudGUI {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             if (!File.Exists("youtube-dl.exe")) {
-                MessageBox.Show(
+                bool nodo = MessageBox.Show(
                         $"youtube-dl.exe is not present, and {progname} will attempt to download it.\n" +
                          "It's best you try to update after this.\n" +
                         $"{progname} will appear after a few seconds.",
                         progname,
-                        MessageBoxButton.OK,
+                        MessageBoxButton.OKCancel,
                         MessageBoxImage.Exclamation
-                    );
+                    ) == MessageBoxResult.Cancel;
                 webClient.DownloadFile(
                     "https://github.com/ytdl-org/youtube-dl/releases/download/2019.10.16/youtube-dl.exe",
                     "youtube-dl.exe");
@@ -119,7 +119,7 @@ namespace BayoudGUI {
             );
         }
 
-        private async void ButtonDownload_Click(object sender, RoutedEventArgs e) {
+        private void ButtonDownload_Click(object sender, RoutedEventArgs e) {
             /*
             Console.WriteLine("Download button click");
             string ffs = "";
@@ -145,26 +145,15 @@ namespace BayoudGUI {
             */
 
             string eargs = "";
-            string fn = "%(title)";
 
             if ((bool)boxDLAud.IsChecked) eargs += "-x ";
-            if ((bool)chkFF.IsChecked) fn = "out";
+            if ((bool)chkFF.IsChecked) eargs += $"--exec \"ffmpeg -i {{}} {txtFFCmd.Text} '{{}}.{txtFFFileExt}'\"";
 
             ProcessStartInfo startInfo = new ProcessStartInfo {
                 FileName = "youtube-dl.exe",
-                Arguments = $"{eargs}-o \"{fn}.%(ext)s\" \"{textBoxURL.Text}\""
+                Arguments = $"{eargs} \"{textBoxURL.Text}\""
             };
-            Process ytdl_process = Process.Start(startInfo);
-            if ((bool)chkFF.IsChecked) {
-                await (Task.Run(() => {
-                    ytdl_process.WaitForExit();
-                    ProcessStartInfo startInfo1 = new ProcessStartInfo {
-                        FileName = "ffmpeg.exe",
-                        Arguments = $"-i out.* {txtFFCmd.Text} \"{txtFFFileExt.Text}\""
-                    };
-                    Process.Start(startInfo1);
-                }));
-            }
+            Process.Start(startInfo);
         }
 
         private void processexit(object sender, EventArgs e) {

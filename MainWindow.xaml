@@ -19,9 +19,9 @@
         <CheckBox x:Name="chkFF" Content="Transcode after download" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Checked="ChkFF_Checked" Unchecked="ChkFF_Unchecked"/>
         <Grid x:Name="Gffstuff" Visibility="Visible">
             <TextBlock HorizontalAlignment="Left" Margin="10,145,0,0" TextWrapping="Wrap" Text="Command Line Options" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtFFCmd" HorizontalAlignment="Left" Height="20" Margin="10,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,191,0,0" TextWrapping="Wrap" Text="Output Filename" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtFFFileExt" HorizontalAlignment="Left" Height="20" Margin="10,212,0,0" TextWrapping="Wrap" Text="a.mp4" VerticalAlignment="Top" Width="224"/>
+            <TextBox x:Name="txtFFCmd" HorizontalAlignment="Left" Height="20" Margin="10,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" Text="-vcodec h264 -acodec aac"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,191,0,0" TextWrapping="Wrap" Text="File Extension" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtFFFileExt" HorizontalAlignment="Left" Height="20" Margin="10,212,0,0" TextWrapping="Wrap" Text="mp4" VerticalAlignment="Top" Width="224"/>
             <Button HorizontalAlignment="Left" Margin="209,237,0,0" VerticalAlignment="Top" Width="24" Height="24" Click="Button_Click">
                 <Image Source="{StaticResource Save_FloppyDisk}" Width="16" Height="16"/>
             </Button>
