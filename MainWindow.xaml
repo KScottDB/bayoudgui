@@ -8,7 +8,7 @@
         Title="BayoudGUI" Height="300" Width="250" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="BayoudGUI.ico">
     <Grid>
         <ProgressBar x:Name="progress" HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" VerticalAlignment="Top" Width="224" Visibility="Hidden"/>
-        <TextBox x:Name="textBoxURL" HorizontalAlignment="Left" Height="19" Margin="10,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
+        <TextBox x:Name="textBoxURL" HorizontalAlignment="Left" Height="19" Margin="10,35,0,0" VerticalAlignment="Top" Width="224"/>
 
         <StackPanel Orientation="Horizontal" Margin="10,59,10,192" Height="20">
             <Button x:Name="buttonUpdate"   Content="Update"   Width="110" Margin="0,0,4,0" Height="20" Click="ButtonUpdate_Click"/>
@@ -20,12 +20,13 @@
         <Grid x:Name="Gffstuff" Visibility="Visible">
             <TextBlock HorizontalAlignment="Left" Margin="10,145,0,0" TextWrapping="Wrap" Text="Command Line Options" VerticalAlignment="Top"/>
             <TextBox x:Name="txtFFCmd" HorizontalAlignment="Left" Height="20" Margin="10,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,191,0,0" TextWrapping="Wrap" Text="File Extension" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtFFFileExt" HorizontalAlignment="Left" Height="20" Margin="10,212,0,0" TextWrapping="Wrap" Text="mp3" VerticalAlignment="Top" Width="224"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,191,0,0" TextWrapping="Wrap" Text="Output Filename" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtFFFileExt" HorizontalAlignment="Left" Height="20" Margin="10,212,0,0" TextWrapping="Wrap" Text="a.mp4" VerticalAlignment="Top" Width="224"/>
             <Button HorizontalAlignment="Left" Margin="209,237,0,0" VerticalAlignment="Top" Width="24" Height="24" Click="Button_Click">
-                <Image Source="pack://siteoforigin:,,,/Save_FloppyDisk.png" Width="16" Height="16"/>
+                <Image Source="{StaticResource Save_FloppyDisk}" Width="16" Height="16"/>
             </Button>
         </Grid>
         <Label x:Name="lblStatus" Content="(status placeholder)" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="224" Visibility="Hidden"/>
+        <CheckBox x:Name="boxDLAud" Content="Audio Only" HorizontalAlignment="Left" Margin="10,242,0,0" VerticalAlignment="Top" Height="19" Width="162"/>
     </Grid>
 </Window>

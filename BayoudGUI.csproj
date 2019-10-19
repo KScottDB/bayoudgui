@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F6B72E99-5ED4-464B-ADB0-66E28C5E8534}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>BayoudGUI</RootNamespace>
     <AssemblyName>BayoudGUI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -38,6 +38,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>BayoudGUI.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -102,7 +105,7 @@
     <Resource Include="BayoudGUI.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Save_FloppyDisk.png" />
+    <EmbeddedResource Include="Save_FloppyDisk.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openHS.png" />
