@@ -147,11 +147,11 @@ namespace BayoudGUI {
             string eargs = "";
 
             if ((bool)boxDLAud.IsChecked) eargs += "-x ";
-            if ((bool)chkFF.IsChecked) eargs += $"--exec \"ffmpeg -i {{}} {txtFFCmd.Text} '{{}}.{txtFFFileExt}'\"";
+            if ((bool)chkFF.IsChecked) eargs += $"--exec \"ffmpeg -i {{}} {txtFFCmd.Text} {{}}.{txtFFFileExt.Text}\" & del {{}}";
 
             ProcessStartInfo startInfo = new ProcessStartInfo {
                 FileName = "youtube-dl.exe",
-                Arguments = $"{eargs} \"{textBoxURL.Text}\""
+                Arguments = $"{eargs} \"{textBoxURL.Text}\" & pause"
             };
             Process.Start(startInfo);
         }
