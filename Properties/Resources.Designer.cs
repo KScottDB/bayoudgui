@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BayoudGUI.Properties {
+namespace BayoudGUI_WPF.Properties {
     using System;
     
     

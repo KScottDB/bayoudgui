@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace BayoudGUI {
+namespace BayoudGUI_WPF {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

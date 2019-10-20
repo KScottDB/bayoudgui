@@ -17,7 +17,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace BayoudGUI {
+namespace BayoudGUI_WPF {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
