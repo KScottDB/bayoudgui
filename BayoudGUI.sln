@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BayoudGUI_WPF", "BayoudGUI_WPF.csproj", "{F6B72E99-5ED4-464B-ADB0-66E28C5E8534}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BayoudGUI", "..\WindowsFormsApp1\BayoudGUI.csproj", "{22F1D593-8B24-4BC8-95E3-818516227CBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BayoudGUI", "BayoudGUI_WinForms\BayoudGUI.csproj", "{22F1D593-8B24-4BC8-95E3-818516227CBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
